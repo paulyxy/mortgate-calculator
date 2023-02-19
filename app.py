@@ -7,7 +7,6 @@ Created on Sat Feb  4 16:09:42 2023
 
 import numpy as np
 import streamlit as st
-import numpy_financial as nf
 from matplotlib import pyplot as plt
 
 st.set_page_config(layout="wide")
@@ -47,7 +46,7 @@ with col2.expander("Step 5: Click here to see the Effective Monthly Rate"):
 with col2.expander("Step 6: Click here to see the loan amount."):
     st.write(loan)
      
-monthlyPayment=-nf.pmt(rate/12,12*year,loan)
+monthlyPayment=loan*rate/12/(1-1/(1+rate/12)**(year*12))
   
 with col2.expander("Step 7: Click here to see the monthly mortgage payment:"):
     st.write(round(monthlyPayment,2))
